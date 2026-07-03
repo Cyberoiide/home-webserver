@@ -27,6 +27,13 @@ template to copy for future modules.
   exposed to the open internet. Add a guard (API key or JWT) later if that
   changes — not building it speculatively now.
 
+## Tooling
+
+Project init and all module/controller/service scaffolding use the Nest CLI
+(`nest new`, `nest g module/controller/service ...`) rather than hand-written
+files — CLI output is correctly wired into `AppModule` and matches Nest
+conventions.
+
 ## Module organization
 
 Flat `src/modules/<name>/` per device/domain. No shared `Device` interface
