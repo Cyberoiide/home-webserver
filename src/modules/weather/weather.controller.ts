@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, HttpCode, Query } from '@nestjs/common';
 import { WeatherService } from './weather.service';
 import { GetWeatherDTO } from './dto/getWeather.dto';
 
