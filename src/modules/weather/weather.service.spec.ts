@@ -1,3 +1,4 @@
+import { CacheModule } from '@nestjs/cache-manager';
 import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { WeatherAPIService } from './weather-api.service';
@@ -8,7 +9,7 @@ describe('WeatherService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot({ isGlobal: true })],
+      imports: [ConfigModule.forRoot({ isGlobal: true }), CacheModule.register()],
       providers: [WeatherService, WeatherAPIService],
     }).compile();
 
