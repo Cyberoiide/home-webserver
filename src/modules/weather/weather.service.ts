@@ -6,18 +6,18 @@ import { WeatherAPIService } from './weather-api.service';
 
 @Injectable()
 export class WeatherService {
-  constructor(
-    private readonly weatherAPIService: WeatherAPIService,
-    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
-  ) {}
+	constructor(
+		private readonly weatherAPIService: WeatherAPIService,
+		@Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
+	) {}
 
-  async getWeather(data: GetWeatherDTO) {
-    const query = `${data.lat},${data.long}`;
-    const cached = await this.cacheManager.get(query);
-    if (cached) return cached;
+	async getWeather(data: GetWeatherDTO) {
+		const query = `${data.lat},${data.long}`;
+		const cached = await this.cacheManager.get(query);
+		if (cached) return cached;
 
-    const result = await this.weatherAPIService.getWeather(query);
-    await this.cacheManager.set(query, result);
-    return result;
-  }
+		const result = await this.weatherAPIService.getWeather(query);
+		await this.cacheManager.set(query, result);
+		return result;
+	}
 }

@@ -6,19 +6,22 @@ import { WeatherController } from './weather.controller';
 import { WeatherService } from './weather.service';
 
 describe('WeatherController', () => {
-  let controller: WeatherController;
+	let controller: WeatherController;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot({ isGlobal: true }), CacheModule.register()],
-      controllers: [WeatherController],
-      providers: [WeatherService, WeatherAPIService],
-    }).compile();
+	beforeEach(async () => {
+		const module: TestingModule = await Test.createTestingModule({
+			imports: [
+				ConfigModule.forRoot({ isGlobal: true }),
+				CacheModule.register(),
+			],
+			controllers: [WeatherController],
+			providers: [WeatherService, WeatherAPIService],
+		}).compile();
 
-    controller = module.get<WeatherController>(WeatherController);
-  });
+		controller = module.get<WeatherController>(WeatherController);
+	});
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
+	it('should be defined', () => {
+		expect(controller).toBeDefined();
+	});
 });
