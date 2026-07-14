@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -10,7 +10,10 @@ export class WeatherAPIService {
     const response: Response = await fetch(url);
 
     if (response.status !== 200) {
-      throw new Error('Unable to fetch weather data');
+      throw new HttpException(
+        'Unable to fetch weather data',
+        response.status >= 500 ? HttpStatus.SERVICE_UNAVAILABLE : HttpStatus.BAD_GATEWAY,
+      );
     }
 
     const data = await response.json();
