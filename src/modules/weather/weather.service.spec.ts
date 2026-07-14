@@ -1,4 +1,6 @@
+import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
+import { WeatherAPIService } from './weather-api.service';
 import { WeatherService } from './weather.service';
 
 describe('WeatherService', () => {
@@ -6,7 +8,8 @@ describe('WeatherService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WeatherService],
+      imports: [ConfigModule.forRoot({ isGlobal: true })],
+      providers: [WeatherService, WeatherAPIService],
     }).compile();
 
     service = module.get<WeatherService>(WeatherService);

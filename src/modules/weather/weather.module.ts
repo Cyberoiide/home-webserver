@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { WeatherService } from './weather.service';
 import { WeatherController } from './weather.controller';
-import { WeatherAPIService } from 'src/app.service';
+import { WeatherAPIService } from './weather-api.service';
 
 @Module({
   controllers: [WeatherController],
