@@ -1,13 +1,14 @@
+import { CacheModule } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
-import { CacheModule } from '@nestjs/cache-manager';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PrismaModule } from './prisma/prisma.module';
 import { TvModule } from './modules/tv/tv.module';
 import { WeatherModule } from './modules/weather/weather.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { ServersModule } from './servers/servers.module';
 
 @Module({
 	imports: [
@@ -16,6 +17,7 @@ import { WeatherModule } from './modules/weather/weather.module';
 		PrismaModule,
 		TvModule,
 		WeatherModule,
+		ServersModule,
 	],
 	controllers: [AppController],
 	providers: [
