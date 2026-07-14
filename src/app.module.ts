@@ -10,7 +10,7 @@ import { TvModule } from './modules/tv/tv.module';
 import { WeatherModule } from './modules/weather/weather.module';
 
 @Module({
-	imports: [ConfigModule.forRoot({ isGlobal: true }), CacheModule.register({ isGlobal: true }), PrismaModule, TvModule, WeatherModule],
+	imports: [ConfigModule.forRoot({ isGlobal: true }), CacheModule.register({ isGlobal: true, ttl: 600_000 }), PrismaModule, TvModule, WeatherModule],
 	controllers: [AppController],
 	providers: [
 		AppService,
