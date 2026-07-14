@@ -14,10 +14,10 @@ export class WeatherService {
   async getWeather(data: GetWeatherDTO) {
     const query = `${data.lat},${data.long}`;
     const cached = await this.cacheManager.get(query);
-    if (cached) return { result: cached };
+    if (cached) return cached;
 
     const result = await this.weatherAPIService.getWeather(query);
     await this.cacheManager.set(query, result);
-    return { result };
+    return result;
   }
 }
