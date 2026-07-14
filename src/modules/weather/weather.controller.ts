@@ -2,7 +2,7 @@ import { Controller, Get, HttpCode, Query } from '@nestjs/common';
 import { WeatherService } from './weather.service';
 import { GetWeatherDTO } from './dto/getWeather.dto';
 
-@Controller('weathers')
+@Controller('weather')
 export class WeatherController {
   constructor(private readonly weatherService: WeatherService) {}
 
