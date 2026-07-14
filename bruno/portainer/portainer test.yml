@@ -1,0 +1,20 @@
+info:
+  name: portainer test
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: https://portainer.cyberoiide.qzz.io:9443/api/stacks
+  auth: inherit
+
+headers:
+  - name: X-API-Key
+    value: "{{PORTAINER_ACCESS_TOKEN}}"
+    enabled: true
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
